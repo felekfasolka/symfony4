@@ -3,8 +3,6 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Agent;
-use App\Entity\Comment;
-use App\Entity\Conference;
 use App\Entity\Contact;
 use App\Entity\Mission;
 use App\Entity\MissionStatus;
@@ -27,7 +25,7 @@ class DashboardController extends AbstractDashboardController
     public function index(): Response
     {
         $routeBuilder = $this->get(AdminUrlGenerator::class);
-        $url = $routeBuilder->setController(ConferenceCrudController::class)->generateUrl();
+        $url = $routeBuilder->setController(MissionCrudController::class)->generateUrl();
 
         return $this->redirect($url);
         //return parent::index();
@@ -36,14 +34,11 @@ class DashboardController extends AbstractDashboardController
     public function configureDashboard(): Dashboard
     {
         return Dashboard::new()
-            ->setTitle('Test');
+            ->setTitle('SymfonyAPP');
     }
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linkToRoute('Back to Homepage', 'fas fa-home', 'homepage');
-        yield MenuItem::linkToCrud('Conferences', 'fas fa-map-marker-alt', Conference::class);
-        yield MenuItem::linkToCrud('Comments', 'fas fa-comments', Comment::class);
         yield MenuItem::linkToCrud('Missions', 'fab fa-old-republic', Mission::class);
         yield MenuItem::linkToCrud('Mission types', 'fab fa-old-republic', MissionType::class);
         yield MenuItem::linkToCrud('Mission status', 'fab fa-old-republic', MissionStatus::class);
