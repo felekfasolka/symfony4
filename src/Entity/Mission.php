@@ -30,7 +30,7 @@ class Mission
     private $description;
 
     /**
-     * @ORM\Column(type="string", length=10)
+     * @ORM\Column(type="string", length=50)
      */
     private $codeName;
 
@@ -94,6 +94,11 @@ class Mission
         $this->contacts = new ArrayCollection();
         $this->specialities = new ArrayCollection();
         $this->safeHouses = new ArrayCollection();
+    }
+
+    public function __toString(): string
+    {
+        return $this->title;
     }
 
     public function getId(): ?int

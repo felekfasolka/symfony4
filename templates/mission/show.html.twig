@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}{{ mission }}{% endblock %}
+
+{% block body %}
+    <h2>{{ mission }} alias {{ mission.codeName }}</h2>
+
+            <h4>Status: {{ mission.missionStatus }}</h4>
+            <h4>Description: {{ mission.description }}</h4>
+            <h4>Country: {{ mission.country }}</h4>
+
+{% endblock %}
